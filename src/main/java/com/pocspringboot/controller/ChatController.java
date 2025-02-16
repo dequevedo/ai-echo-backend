@@ -5,8 +5,11 @@ import com.pocspringboot.model.response.ChatResponse;
 import com.pocspringboot.model.response.VoiceToTextResponse;
 import com.pocspringboot.service.ChatService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,7 +25,7 @@ public class ChatController {
     }
 
     @PostMapping("/voice-to-text")
-    public VoiceToTextResponse voiceToText(@RequestBody MultipartFile request) {
-        return service.voiceToText(request);
+    public VoiceToTextResponse voiceToText(@RequestParam("file") MultipartFile file) {
+        return service.voiceToText(file);
     }
 }
