@@ -15,8 +15,9 @@ public class TextToVoiceRequest {
 
     private String model = "tts-1";
 
-    private String input = "Today is a wonderful day to build something people love!";
+    @NotEmpty(message = "input is mandatory")
+    private String input;
 
-    private String voice = "alloy";
+    private String voice = "nova";
 
 }
