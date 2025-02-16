@@ -1,6 +1,7 @@
 package com.pocspringboot.controller;
 
 import com.pocspringboot.model.request.ChatRequest;
+import com.pocspringboot.model.response.ChatResponse;
 import com.pocspringboot.service.ChatService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,7 +15,7 @@ public class ChatController {
     private final ChatService service;
 
     @PostMapping("/chat")
-    public String chat(@RequestBody ChatRequest request) {
+    public ChatResponse chat(@RequestBody ChatRequest request) {
         return service.chat(request);
     }
 }

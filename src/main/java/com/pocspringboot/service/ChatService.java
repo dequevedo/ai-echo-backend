@@ -1,6 +1,7 @@
 package com.pocspringboot.service;
 
 import com.pocspringboot.model.request.ChatRequest;
+import com.pocspringboot.model.response.ChatResponse;
 import dev.langchain4j.model.openai.OpenAiChatModel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,8 +17,11 @@ public class ChatService {
         this.chatModel = OpenAiChatModel.withApiKey(apiKey);
     }
 
-    public String chat(ChatRequest request) {
-        return chatModel.generate(request.getMessage());
+    public ChatResponse chat(ChatRequest request) {
+        log.info("Sending request: " + request);
+        var response = chatModel.generate(request.getMessage());
+        log.info("Received response: " + response);
+        return ChatResponse.builder().message(response).build();
     }
 
 }
