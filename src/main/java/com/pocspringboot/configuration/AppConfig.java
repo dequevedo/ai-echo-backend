@@ -20,7 +20,7 @@ public class AppConfig {
 
     @Bean
     public OpenAiChatModel openAiChatModel() {
-        return OpenAiChatModel.withApiKey(openAIApiKey).modelName();
+        return OpenAiChatModel.withApiKey(openAIApiKey);
     }
 
     @Bean
